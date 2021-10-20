@@ -19,102 +19,61 @@
     }
 
 ]
-const searchBook = document.getElementById('search-books')
-// window.addEventListener("beforeunload", render());
-const btn = document.querySelectorAll('button.remove');
-console.log(btn)
 
-function render()
-{
-  searchBook.addEventListener('keyup', (e) =>
-  {
-    e.preventDefault();
-    search(e.target.value)
-  })
-
+function render(){
   const container = document.getElementById('list-books');
+    container.innerHTML = ''; //clear existing children of container
+    var newArr =[];
+    books.forEach((el,i) => {
+        const imageContainer = document.createElement('div');
+      const book = document.createElement('div');
+      book.classList.add("book")
+      container.appendChild(book)
+        imageContainer.classList.add('imageContainer');
+        
+        book.classList.add(`book_${i}`);
+        book.textContent = `${books[i].title} 
+        by ${books[i].author}`
+        const image = document.createElement('img');
+        image.setAttribute('src', el.image);
+        image.classList.add(`img`);
+        imageContainer.appendChild(image);
+        book.appendChild(imageContainer);
+        
+        newArr.push(book)        
 
-  let newArray = []
-  
- books.forEach((b, id) =>
-  {
+    });
+ 
 
-   const book = document.createElement('div')
-   book.classList.add("book" )
-   book.innerHTML = `
-     <img src = ${b.image} class="img" />
-     <div> ${b.title} </div> by
-    <div>  ${b.author} </div>
-  
-   
-   `;
+}
+function addNewBook(){
     
-   newArray.push(book)
-  container.appendChild(book)
+    const addBookButton = document.getElementById('add');
+    const submitButton = document.getElementById('submit_btn')
+    addBookButton.addEventListener('click', () => {
+        const form = document.getElementById('form');
+        form.style.display = "block"
+    });
 
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        form.style.display = "none";
+        const bookTitleVal = document.getElementById('title').value;
+        const authorVal = document.getElementById('author').value;
+        const imageLinkVal = document.getElementById('image').value;
+
+        books.push({
+            title: bookTitleVal,
+            author: authorVal,
+            image: imageLinkVal
+
+        });
   
-  })
- 
-  function search(word)
-  {
-    let newBooks = books.filter(book=> book.title ===word|| book.author ===word )
-  console.log(newArray)
-    if (newArray) {container.innerHTML = ""};
-   
-  newBooks.map((book,id) =>
-    {
-      const book2 = document.createElement('div')
-      const imgContainer = document.createElement('div')
-       book2.innerHTML += `
+        render();
        
-    <h1> ${book.title} </h1>
-    <h1> ${book.author} </h1>
- 
-    `
-       container.appendChild(book2)
-   const image = document.createElement('img')
-      image.setAttribute('src', book.image);
-      imgContainer.appendChild(image)
-      book2.appendChild(imgContainer)
-    })
-   
-  }
-  
-  
+    });
+    render();
 
 }
-function addNewBook()
-{
- 
-  const btn = document.getElementById('add')
-  const submit = document.getElementById('submit_btn')
-btn.style.display ="none"
-  btn.addEventListener('click', () =>
-  {
-    const from = document.getElementById('form');
-    form.style.display="block"
-   
-  })
-  submit.addEventListener('click', (e) =>
-  {
-
-    e.preventDefault();
-    console.log("why is repeated")
-    form.style.display = "none";
-    btn.style.display = "block"
-        console.log(books)
-
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const image = document.getElementById('image').value;
-  books.push(  { title: title, author, image })
-    console.log(books)
-render()
-  })
-// render()
-
-}
-
+addNewBook();
   
-addNewBook()
-render()
