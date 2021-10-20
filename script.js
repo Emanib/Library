@@ -19,9 +19,44 @@
     }
 
 ]
+const search = document.getElementById("search-books")
+
+search.addEventListener("keyup",(e)=>{
+  e.preventDefault();
+  const word = e.target.value 
+  console.log(word)
+  const newBooks = books.filter(book =>
+  {
+  return book.title.includes(word) || book.author.includes(word)
+  })
+  container.innerHTML = "";
+  var newArr =[];
+  newBooks.forEach((el,i) => {
+        const imageContainer = document.createElement('div');
+      const book = document.createElement('div');
+      book.classList.add("book")
+      container.appendChild(book)
+        imageContainer.classList.add('imageContainer');
+        
+        book.classList.add(`book_${i}`);
+        book.textContent = `${books[i].title} 
+        by ${books[i].author}`
+        const image = document.createElement('img');
+        image.setAttribute('src', el.image);
+        image.classList.add(`img`);
+        imageContainer.appendChild(image);
+        book.appendChild(imageContainer);
+        
+        newArr.push(book)        
+
+    });
+ 
+ 
+})
+// window.onload = render();
+  const container = document.getElementById('list-books');
 
 function render(){
-  const container = document.getElementById('list-books');
     container.innerHTML = ''; //clear existing children of container
     var newArr =[];
     books.forEach((el,i) => {
