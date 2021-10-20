@@ -57,7 +57,6 @@ function render()
  
   function search(word)
   {
-    render()
     let newBooks = books.filter(book=> book.title ===word|| book.author ===word )
   console.log(newArray)
     if (newArray) {container.innerHTML = ""};
