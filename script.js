@@ -20,37 +20,9 @@
 
 ]
 const searchBook = document.getElementById('search-books')
-window.addEventListener("beforeunload", render());
+// window.addEventListener("beforeunload", render());
 const btn = document.querySelectorAll('button.remove');
 console.log(btn)
-
-window.remove = function (id)
-{
-
-  let idx
-  books.forEach((book,idx) =>
-  {
-    console.log(id)
-    console.log(idx)
-    if (idx == id)
-    {
-       return books.splice(idx, 1)
-      
-      }
-    // if (book.index === id)
-    // {
-    // console.log(books.splice(idx,1))
-    // }
-    // else
-    // {
-    //   console.log("no")
-    // }
-    render()
-})
-
-
-
-}
 
 function render()
 {
@@ -59,44 +31,30 @@ function render()
     e.preventDefault();
     search(e.target.value)
   })
-//  var  localBooks = JSON.parse(localStorage.getItem('books')) || books;
 
   const container = document.getElementById('list-books');
-  const firstShelf = document.createElement('div');
-  const secondShelf = document.createElement('div');
-  container.appendChild(firstShelf)
-  container.appendChild(secondShelf)
-  firstShelf.classList.add('first-shelf')
-  secondShelf.classList.add('second-shelf')
+
   let newArray = []
   
  books.forEach((b, id) =>
   {
 
-    const imgContainer = document.createElement('div')
-    const book = document.createElement('div')
-   book.innerHTML = ` Book:
+   const book = document.createElement('div')
+   book.classList.add("book" )
+   book.innerHTML = `
+     <img src = ${b.image} class="img" />
      <div> ${b.title} </div> by
     <div>  ${b.author} </div>
-    <button class ="remove" onclick="remove(${id})"> remove </button>
+  
+   
    `;
-    const image = document.createElement('img')
-    image.setAttribute('src', b.image);
-    imgContainer.appendChild(image)
-    book.appendChild(imgContainer)
+    
    newArray.push(book)
+  container.appendChild(book)
 
   
   })
-  newArray.forEach((item, index) =>
-  {
-     if (index <= 2) {
-      firstShelf.appendChild(item)
-    } else {
-      secondShelf.appendChild(item)
-    } 
-    
-  })
+ 
   function search(word)
   {
     render()
@@ -109,6 +67,7 @@ function render()
       const book2 = document.createElement('div')
       const imgContainer = document.createElement('div')
        book2.innerHTML += `
+       
     <h1> ${book.title} </h1>
     <h1> ${book.author} </h1>
  
@@ -127,31 +86,36 @@ function render()
 }
 function addNewBook()
 {
+ 
   const btn = document.getElementById('add')
   const submit = document.getElementById('submit_btn')
-   var  localBooks = JSON.parse(localStorage.getItem('books')) || books;
-
+btn.style.display ="none"
   btn.addEventListener('click', () =>
   {
-  
-    const from = document.getElementById('form')
-    from.style.display = 'block'
+    const from = document.getElementById('form');
+    form.style.display="block"
+   
   })
   submit.addEventListener('click', (e) =>
   {
+
     e.preventDefault();
+    console.log("why is repeated")
     form.style.display = "none";
+    btn.style.display = "block"
+        console.log(books)
+
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const image = document.getElementById('image').value;
-   localBooks.push( { title: title, author, image })
+  books.push(  { title: title, author, image })
     console.log(books)
 render()
   })
-render()
+// render()
 
 }
 
   
 addNewBook()
-// render()
+render()

@@ -1,0 +1,140 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+h1 
+{
+    text-align: center;
+}
+.img
+{
+    object-fit: cover;
+    width:100px; 
+}
+#list-books
+{
+display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* background-color: pink; */
+    margin-top: 50px;
+
+}
+.book{
+    /* background-color: pink; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+/* border :1px solid #fff; */
+/* justify-content: space-evenly; */
+background-color: 	#2460A7ff;
+/* gap:15px;  */
+margin:10px; 
+border-radius: 6px;
+color:#fff;
+  
+}
+#title,#author,#image
+{
+    border-radius: 6px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+      border: 1px solid #22a6b3;
+   padding: 6px;
+}
+#title,#author,#image:focus
+{
+    outline: none;
+}
+#form
+{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+.add-book
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#search
+{
+    width:fit-content;
+    height: fit-content;
+    position: relative;
+    margin-left:10px;
+    /* background-color: chocolate; */
+}
+#search-books
+{
+   height: 50px;
+  width: 50px;
+   border-style: none;
+     padding: 10px;
+  font-size: 18px;
+   letter-spacing: 2px;
+     outline: none;
+  border-radius: 25px;
+   background-color: #22a6b3;
+     transition: all .5s ease-in-out;
+  padding-right: 40px;
+
+}
+#search-books:focus
+{
+    width: 300px;
+  border-radius: 0px;
+  /* background-color: transparent; */
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.btn-search:focus ~ #search-books
+{
+width: 330px;
+  border-radius: 0px;
+  /* background-color: transparent; */
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.btn-search
+{
+width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;
+}
+#search-books::placeholder
+{
+      color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.form-btn
+{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap:2px;
+    margin-right:10px;
+}
+button 
+{
+    border:none;
+    background-color: #22a6b3;
+    color:#fff; 
+    padding:10px; 
+    border-radius:2px ;
+}

@@ -5,28 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <title> Welcome to heaven </title>
 </head>
-<br>
-<h1> Books </h1>
-<div id="books"></div>
+<h1>  Welcome to the library </h1>
+<!-- <div id="books"></div> -->
 
-<button id ="add"> add Book </button>
+<div class ="add-book"> 
+    <div  id="search">
+        <button class="btn-search"> <i class="fas fa-search"></i> </button>
+        <input type="text" placeholder="search for your favorite book" id="search-books">
+    </div>
+<div class="form-btn"> 
 <form id ="form" type ="submit">
-<label > title </label>
-<input type="text" id ="title">
+    <div> <label> title </label>
+    <input type="text" id="title"> </div>
+<div> 
 <label> author</label>
 <input type="text" id="author">
+</div>
+<div> 
 <label> image  </label>
 <input type="text" id="image">
- <button type="submit" id="submit_btn"> submit </button> </br>
- <form action="">
-    <input type="text" placeholder="search for your favorite book"  id ="search-books">
- </form>
-
-
-
+</div>
+ <button type="submit" id="submit_btn"> submit </button> 
 </form>
+<button id="add"> add Book </button>
+</div>
+</div>
 <div id="list-books"></div>
 
     <script src ="./script.js"> </script>
